@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ShowAvaliableLanguage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--
+แบบที่ 1 : โยนเข้ามาเลบ
+-->
+@{
+    /*
+    var cultures = ViewBag.LanguagesList as System.Globalization.CultureInfo[];
+    var listItems = cultures.Select(c => new SelectListItem() { Text = c.EnglishName });
+    */
+
+}
+<!--
+แบบที่ 2 : Fixed Model สำหรับ View เลย ปกติ ถ้าสร้าง POCO Class ลงท้ายชื่อเป็น ViewModel ในนี้เอา CultureInfo ของ .Net มาใช้เลย
+         ข้อดี Complile Time Check
+
+//model System.Globalization.CultureInfo[]
+{
+    //var listItems = Model.Select(c => new SelectListItem() { Text = c.EnglishName });
+}
+
+<h2>Show Avaliable Language</h2>
+
+<!--ใช้กับแบบที่ 1 และ 2
+<div class="row">
+    <div class="col-xs-6">
+        //Html.ListBox("lang", listItems)
+    </div>
+    <div class="col-xs-6">
+        //Html.DropDownList("lang2", listItems)
+    </div>
+</div>
+-->
+
+@model LearnASPNETMVC.ViewModels.Home.ShowLanguagesViewModel
+<h2>Available languages</h2>
+<div class="row">
+    <div class="col-xs-6">
+        @Html.ListBox("lang", Model.CulturesList)
+    </div>
+    <div class="col-xs-6">
+        @Html.DropDownList("lang2", Model.CulturesList)
+    </div>
+</div>
+
